@@ -144,7 +144,7 @@ scheduler.add_job(
     daily_job,
     trigger="cron",
     hour=16,
-    minute=0
+    minute=10
 )
 
 scheduler.start()
