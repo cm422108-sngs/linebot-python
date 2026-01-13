@@ -11,6 +11,11 @@ from dateutil.relativedelta import relativedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 import os
+
+import threading
+import time
+import requests
+
 # =============================
 # Flask & LINE Bot 基本設定
 # =============================
@@ -150,6 +155,20 @@ atexit.register(lambda: scheduler.shutdown())
 # =============================
 # 啟動 Flask
 # =============================
+def keep_awake():
+    url = os.getenv("RENDER_URL")  # 你 Render 網址，放在環境變數
+    if not url:
+        print("❌ RENDER_URL 未設定，無法自我喚醒")
+        return
+
+    while True:
+        try:
+            r = requests.get(url)
+            print(f"⏱ Ping 自我喚醒: {r.status_code}")
+        except Exception as e:
+            print("❌ Ping 失敗:", str(e))
+        time.sleep(25 * 60)  # 每 25 分鐘 ping 一次
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
