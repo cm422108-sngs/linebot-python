@@ -171,5 +171,7 @@ def keep_awake():
 
 
 if __name__ == "__main__":
+    # 啟動 keep_awake 的背景執行緒，daemon=True 表示程式結束時自動結束此執行緒
+    threading.Thread(target=keep_awake, daemon=True).start()
     app.run(host="0.0.0.0", port=8080)
 
