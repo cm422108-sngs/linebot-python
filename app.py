@@ -34,9 +34,9 @@ def callback():
 # =============================
 def fetch_fundclear_history(fund_no, org_id="A0036"):
     today = datetime.today()
-    end_date = today.strftime("%Y/%m/%d")
-    start_date = (today - relativedelta(years=5)).strftime("%Y/%m/%d")
-
+    #end_date = today.strftime("%Y/%m/%d")
+    #start_date = (today - relativedelta(years=5)).strftime("%Y/%m/%d")
+    start_date="2021/01/07", end_date="2026/01/07"
     url = "https://www.fundclear.com.tw/api/onshore/nav-profit/query-history"
     headers = {
         "Accept": "application/json",
