@@ -32,17 +32,21 @@ def callback():
 # =============================
 # 基金資料 API
 # =============================
-def fetch_fundclear_history(fund_no, org_id="A0036", start_date="2021/01/07", end_date="2026/01/07"):
+
     #today = datetime.today()
     #end_date = today.strftime("%Y/%m/%d")
     #start_date = (today - relativedelta(years=5)).strftime("%Y/%m/%d")
+def fetch_fundclear_history(fund_no, org_id="A0036", start_date="2021/01/07", end_date="2026/01/07"):
     url = "https://www.fundclear.com.tw/api/onshore/nav-profit/query-history"
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Origin": "https://www.fundclear.com.tw",
         "Referer": "https://www.fundclear.com.tw/onshore/nav-profit/fund-nav?type=history",
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+        "sec-ch-ua": '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"Windows"',
     }
 
     payload = {
